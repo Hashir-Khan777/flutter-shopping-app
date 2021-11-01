@@ -86,7 +86,7 @@ class _HomeState extends State<Home> {
 Widget card(context) {
   return Container(
     width: MediaQuery.of(context).size.width * 0.4,
-    height: MediaQuery.of(context).size.height * 0.465,
+    height: MediaQuery.of(context).size.height * 0.48,
     margin: const EdgeInsets.only(top: 10, bottom: 10),
     child: Column(
       children: [

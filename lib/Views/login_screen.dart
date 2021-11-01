@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:fluttershoppingapp/Controllers/login_controller.dart';
-import 'package:fluttershoppingapp/Views/home_screen.dart';
 import 'package:fluttershoppingapp/Views/signup_screen.dart';
 import 'package:get/get.dart';
 
@@ -13,6 +12,9 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   final loginController = Get.put(LoginControler());
+  var obscureText = true;
+  var email = '';
+  var password = '';
 
   @override
   Widget build(BuildContext context) {
@@ -61,6 +63,9 @@ class _LoginState extends State<Login> {
                                 border: OutlineInputBorder(),
                                 prefixIcon: Icon(Icons.email)),
                             keyboardType: TextInputType.emailAddress,
+                            onChanged: (value) {
+                              email = value;
+                            },
                           ),
                         ),
                         Container(
@@ -72,16 +77,26 @@ class _LoginState extends State<Login> {
                               border: const OutlineInputBorder(),
                               prefixIcon: const Icon(Icons.lock),
                               suffixIcon: GestureDetector(
-                                child: const Icon(Icons.visibility_off),
+                                onTap: () {
+                                  setState(() {
+                                    obscureText = !obscureText;
+                                  });
+                                },
+                                child: Icon(obscureText
+                                    ? Icons.visibility
+                                    : Icons.visibility_off),
                               ),
                             ),
                             keyboardType: TextInputType.text,
-                            obscureText: true,
+                            obscureText: obscureText,
+                            onChanged: (value) {
+                              password = value;
+                            },
                           ),
                         ),
                         ElevatedButton(
                           onPressed: () {
-                            Get.to(const Home());
+                            loginController.login(email, password);
                           },
                           child: const Text('Login'),
                         ),

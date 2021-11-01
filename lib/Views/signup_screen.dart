@@ -113,7 +113,7 @@ class _SignUpState extends State<SignUp> {
                           onPressed: () {
                             loginController.signUp(name, email, password);
                           },
-                          child: const Text('Regiter'),
+                          child: const Text('Register'),
                         ),
                         SizedBox(
                           width: MediaQuery.of(context).size.width - 40,

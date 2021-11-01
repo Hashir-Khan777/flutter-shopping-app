@@ -14,10 +14,8 @@ userRouter.post(
         res.send({
           _id: user._id,
           name: user.name,
-          gender: user.gender,
           email: user.email,
           password: user.password,
-          image: user.image,
           token: generateToken(user),
         });
         return;
